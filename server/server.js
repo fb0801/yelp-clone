@@ -4,6 +4,11 @@ const express = require("express");
 const port = process.env.PORT || 3001
 const app = express();
 
+//middleware
+app.use((req, res, next) => {
+    console.log('im middleware')
+})
+
 
 //get all rest
 app.get("/api/v1/restaurants", (req, res) => {
@@ -18,7 +23,13 @@ app.get("/api/v1/restaurants", (req, res) => {
 
 //get a rest
 app.get("/api/v1/restaurant/:id", (res,req) => {
-    
+
+})
+
+//create restaurant
+app.create("/api/v1/restaurants", (req, res) => {
+
+
 })
 
 
