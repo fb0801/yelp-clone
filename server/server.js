@@ -4,7 +4,8 @@ const db = require("./db/index");
 
 const port = process.env.PORT || 3001
 const app = express();
-const morgan = require('morgan')
+const morgan = require('morgan');
+const e = require("express");
 
 
 
@@ -52,7 +53,26 @@ app.get("/api/v1/restaurants/:id", async (res,req) => {
 })
 
 //create restaurant
-app.post("/api/v1/restaurants", (req, res) => {
+app.post("/api/v1/restaurants", async(req, res) => {
+
+    try{
+        const results = await db.query("INSERT INTO restaurants (name, location, price_range) values($1,$2,$3)" , 
+        [req.body.name,req.body.location, req.body.price_range]
+        )
+
+        res.status(200).json({
+            status: 'success',
+            
+            data: {
+                restaurants: results.rows[0],
+            },
+    
+        })
+
+    }
+    catch (err) {
+        console.log(err)
+    }
 
 
 })
