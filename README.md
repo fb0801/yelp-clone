@@ -11,6 +11,8 @@ yelp clone built using PERN stack
 
 ## issues:
 
+- ensure using the correct port
+
 
 ## changes made:
 
