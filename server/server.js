@@ -34,7 +34,7 @@ app.get("/api/v1/restaurants", async (req, res) => {
 app.get("/api/v1/restaurants/:id", async (res,req) => {
 
     try {
-        const results = await db.query(`select * from restaurants where id =${req.params.id}`)
+        const results = await db.query("select * from restaurants where id =$1", [req.params.id,])
     
     res.status(200).json({
         status: 'success',
