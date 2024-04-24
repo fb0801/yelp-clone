@@ -8,7 +8,8 @@ import Home from "./routes/Home";
 
 
 const App = () => {
-    return <div>
+    return (
+    <div className='container'>
         <Router>
             <Switch>
             <Route exact path="/" Component={Home}/>
@@ -17,6 +18,7 @@ const App = () => {
             </Switch>
         </Router>
         </div>
+        )
 }
 
 export default App 
