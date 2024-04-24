@@ -1,15 +1,19 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import RestaurantFinder from "../apis/RestaurantFinder";
+import { RestaurantsContext } from '../context/RestaurantsContext';
 
 
-const RestaurantList = () => {
+const RestaurantList = (props) => {
+ const {restaurants, setRestaurants} = useContext(RestaurantsContext)
 
-  useEffect(() => {
-    try {
-      const response = await RestaurantFinder.get("/")
-    } catch (err) {
-
+  useEffect( () => {
+    const fetchData = async () => {
+      try {
+        const response = await RestaurantFinder.get("/")
+        setRestaurants(response.data.data.restaurants)
+      } catch (err) { }
     }
+    fetchData()
   }, [])
 
 
