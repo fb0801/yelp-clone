@@ -64,7 +64,7 @@ app.post("/api/v1/restaurants", async(req, res) => {
             status: 'success',
             
             data: {
-                restaurants: results.rows[0],
+                restaurant: results.rows[0],
             },
     
         })
