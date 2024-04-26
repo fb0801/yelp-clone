@@ -33,6 +33,8 @@ const RestaurantList = (props) => {
             </tr>
         </thead>
         <tbody>
+
+          /*
           <tr>
             <td>maccies</td>
             <td>new york</td>
@@ -41,6 +43,7 @@ const RestaurantList = (props) => {
             <td><button className="btn btn-warning">Update</button></td>
             <td><button className="btn btn-danger">Delete</button></td>
           </tr>
+          */
         </tbody>
       </table>
     </div>
