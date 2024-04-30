@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory } from 'react-router-dom';
 import { RestaurantsContext } from '../context/RestaurantsContext'
 import RestaurantFinder from '../apis/RestaurantFinder'
 
 
 const UpdateRestaurant = (props) => {
     const {id} = useParams()
-    let history = useHistory
+    let history = useHistory()
     const [name, setName] = useState("")
     const [location, setLocation] = useState("")
     const [priceRange, setPriceRange] = useState("")
@@ -31,7 +31,7 @@ const UpdateRestaurant = (props) => {
             location,
             price_range: priceRange
         })
-
+        history.push("/")
     }
 
 
