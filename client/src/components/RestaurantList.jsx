@@ -5,6 +5,7 @@ import { RestaurantsContext } from '../context/RestaurantsContext';
 
 const RestaurantList = (props) => {
  const {restaurants, setRestaurants} = useContext(RestaurantsContext)
+ let history = useHistory()
 
   useEffect( () => {
     const fetchData = async () => {
@@ -16,6 +17,28 @@ const RestaurantList = (props) => {
     fetchData()
   }, [])
 
+
+  const handleDelete = async (id) => {
+    try{
+      const response = await RestaurantFinder.delete(`/${id}`)
+      setRestaurants(restaurants.filter(restaurant => {
+        return restaurant.id !== id
+      }))
+    } catch(err){
+
+    }
+
+  }
+
+
+  const handleUpdate = async (id) => {
+    history.push(`/restaurants/${id}/update`)
+  }
+
+
+const handleRestaurantSelect () {
+  
+}
 
   return (
     <div className='list-group'>
@@ -33,6 +56,19 @@ const RestaurantList = (props) => {
             </tr>
         </thead>
         <tbody>
+          {restaurants && restaurants.map(restaurant => {
+            return (
+            <tr onClick={() => handleRestaurantSelect(restaurant.id)} key={restaurant.id}>
+              <td>{restaurant.name}</td>
+              <td>{restaurant.location}</td>
+              <td>{"$".repeat(restaurant.price_range)}</td>
+              <td>review</td>
+              <td><button onClick={() => handleUpdate(restaurant.id)} className="btn btn-warning">Update</button></td>
+              <td><button onClick={() => handleDelete(restaurant.id)} className="btn btn-danger">Delete</button></td>
+            </tr>
+            )
+          })}
+          {/*
           <tr>
             <td>maccies</td>
             <td>new york</td>
@@ -41,6 +77,7 @@ const RestaurantList = (props) => {
             <td><button className="btn btn-warning">Update</button></td>
             <td><button className="btn btn-danger">Delete</button></td>
           </tr>
+          */}
         </tbody>
       </table>
     </div>
