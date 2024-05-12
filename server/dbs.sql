@@ -19,4 +19,4 @@ CREATE TABLE reviews (
     rating INT NOT NULL check(rating >=1 and rating <= 5)
 );
 
-INSERT INTO  reviews (name, review, rating) values ('carl', 'ok people', 5)
+INSERT INTO  reviews (restaurant_id ,name, review, rating) values (2,'carl', 'ok people', 5)
