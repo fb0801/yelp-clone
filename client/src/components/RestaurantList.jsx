@@ -36,8 +36,8 @@ const RestaurantList = (props) => {
   }
 
 
-const handleRestaurantSelect () {
-  
+const handleRestaurantSelect = (id) => {
+  history.push(`/restaurants/${id}`)
 }
 
   return (
