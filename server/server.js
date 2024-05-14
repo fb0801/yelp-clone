@@ -118,6 +118,16 @@ app.delete("/api/v1/restaurants/:id", async (res,req) => {
 })
 
 
+app.post("/api/v1/restaurants/:id/addReview", async (res,req) => {
+try {
+    const newRating = await db.query("INSERT INTO reviews (restaurant_id, name, review, rating) values($1,$2,$3,$4);", [req.params.id, 
+    req.body.name, req.body.review, req.body.rating])
+    
+} catch (error) {
+    
+}
+
+})
 
 app.listen(port, () => {
     console.log(`server is  up and listening ${port}`)
