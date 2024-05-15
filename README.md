@@ -29,3 +29,5 @@ original repo -> https://github.com/Sanjeev-Thiyagarajan/PERN-STACK-YELP-CLONE
 https://node-postgres.com/
 
 https://cdnjs.com/
+
+https://fontawesome.com/icons/star-half-stroke?f=classic&s=solid
