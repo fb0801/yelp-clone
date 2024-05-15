@@ -120,11 +120,17 @@ app.delete("/api/v1/restaurants/:id", async (res,req) => {
 
 app.post("/api/v1/restaurants/:id/addReview", async (res,req) => {
 try {
-    const newRating = await db.query("INSERT INTO reviews (restaurant_id, name, review, rating) values($1,$2,$3,$4);", [req.params.id, 
-    req.body.name, req.body.review, req.body.rating])
+    const newReview = await db.query("INSERT INTO reviews (restaurant_id, name, review, rating) values($1,$2,$3,$4) returning *;", 
+    [req.params.id, req.body.name, req.body.review, req.body.rating])
+    res.status(201).json({
+        status: 'success',
+        data: {
+            review: newReview.rows[0]
+        }
+    })
     
-} catch (error) {
-    
+} catch (err) {
+    console.log(err)
 }
 
 })
